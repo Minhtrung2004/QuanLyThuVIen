@@ -1,0 +1,3 @@
+@section('header-page')
+@endsection
+
