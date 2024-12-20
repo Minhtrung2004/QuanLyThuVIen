@@ -13,8 +13,9 @@ Route::get('/', function () {
 Route::get('okee',[BookController::class, 'index'])->name('index.book');
 Route::get('create',[BookController::class, 'create'])->name('create.book');
 Route::post('create',[BookController::class, 'store'])->name('store.book');
-Route::post('create',[BookController::class, 'store'])->name('store.book');
 Route::delete('/books{id}',[BookController::class, 'destroy'])->name('destroy.book');
+Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('edit.book');
+Route::put('/books/{id}', [BookController::class, 'update'])->name('update.book');
 
 /* Reader */
 Route::get('oke',[ReaderController::class, 'index'])->name('index.reader');

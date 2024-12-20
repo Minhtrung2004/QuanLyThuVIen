@@ -621,6 +621,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 }
 .btn {
   border-radius: 3px;
+  padding: 5px 10px;
 }
 .float-e-margins .btn {
   margin-bottom: 5px;

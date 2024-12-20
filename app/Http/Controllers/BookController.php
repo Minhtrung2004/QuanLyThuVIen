@@ -53,29 +53,36 @@ class BookController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        $book = Book::findOrFail($id); // Tìm sách theo ID
-        return view('book.edit', compact('book')); // Trả về form chỉnh sửa sách
+        // Tìm sách theo ID
+        $book = Book::findOrFail($id);
+
+        // Trả về view với dữ liệu của sách
+        return view('admin.book.edit', compact('book'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         // Validate dữ liệu nhập vào
+        $book = Book::findOrFail($id);
         $request->validate([
             'name' => 'required',
-            'author' => 'required'
+            'author' => 'required',
+            'category' => 'required',
+            'year' => 'required',
+            'quantity' => 'required'
         ]);
 
         // Tìm sách theo ID và cập nhật
-        $book = Book::findOrFail($id);
+
         $book->update($request->all());
 
         // Chuyển hướng về trang danh sách sách với thông báo thành công
-        return redirect()->route('book.index')->with('success', 'Cập nhật thành công.');
+        return redirect()->route('index.book')->with('success', 'Cập nhật thành công.');
     }
 
     /**

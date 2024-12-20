@@ -38,19 +38,19 @@
                                 <td style="border: 1px solid #ddd; padding: 8px;">{{ $book->created_at }}</td>
                                 <td style="border: 1px solid #ddd; padding: 8px;">{{ $book->updated_at }}</td>
                                 <td style="border: 1px solid #ddd; padding: 8px;">
-                                    <a href="#" class="btn btn-warning btn-sm" title="edit" name="edit"><i
-                                            class="fa fa-edit"></i>
-                                        edit</a>
+                                    <!-- Nút edit -->
+                                    <a href="{{ route('edit.book', $book->id)}}" class="btn btn-warning btn-sm" title="edit" name="edit">
+                                        <i class="fa fa-edit"></i> Edit
+                                    </a>
 
+                                    <!-- Form xóa -->
                                     <form action="{{ route('destroy.book', $book->id) }}" method="POST" style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"
-                                            onclick="return confirm('Bạn có chắc chắn muốn xóa?')">
-                                            <i
-                                            class="fa fa-trash"></i> Delete</button>
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?') ">
+                                            <i class="fa fa-trash"></i> Delete
+                                        </button>
                                     </form>
-
                                 </td>
                             </tr>
                         @endforeach
