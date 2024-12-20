@@ -28,7 +28,7 @@
                 <li><a href="index.html"></a></li>
                 <li class="active"><a href="{{ route('index.book') }}">Book Management</a></li>
                 <li><a href="{{ route('index.reader') }}">Reader Management</a></li>
-                <li><a href="{{ route('index.rorrow') }}">Borrows Management</a></li>
+                <li><a href="{{ route('index.rorrow') }}">Rorrows Management</a></li>
             </ul>
         </li>
     </ul>

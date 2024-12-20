@@ -12,8 +12,8 @@ class RorrowController extends Controller
      */
     public function index()
     {
-        $rorrows = Rorrow::all();
-        return view('admin.borrow.index', compact('rorrows'));
+        $rorrows = Rorrow::with(['book', 'reader'])->get();
+        return view('admin.rorrow.index', compact('rorrows'));
     }
 
     /**

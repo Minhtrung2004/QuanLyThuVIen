@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reader;
 use Illuminate\Http\Request;
 
+
 class ReaderController extends Controller
 {
     /**

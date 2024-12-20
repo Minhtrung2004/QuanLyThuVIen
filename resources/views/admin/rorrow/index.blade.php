@@ -3,7 +3,7 @@
     <div class="col-lg-13">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Library Management</h5>
+                <h5>Borrow Management</h5>
             </div>
             <div class="ibox-content">
                 <table class="table table-hover no-margins" style="border: 2px solid #ddd; border-collapse: collapse;">
@@ -21,15 +21,16 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($rorrows as $rorrow)
                         <tr>
-                            <td style="border: 1px solid #ddd; padding: 8px;">1</td>
-                            <td style="border: 1px solid #ddd; padding: 8px;">1</td>
-                            <td style="border: 1px solid #ddd; padding: 8px;">2</td>
-                            <td style="border: 1px solid #ddd; padding: 8px;">2024-12-18</td>
-                            <td style="border: 1px solid #ddd; padding: 8px;">2024-12-25</td>
-                            <td style="border: 1px solid #ddd; padding: 8px;">0</td>
-                            <td style="border: 1px solid #ddd; padding: 8px;">2024-12-19 10:00:00</td>
-                            <td style="border: 1px solid #ddd; padding: 8px;">2024-12-19 10:00:00</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">{{$rorrow->book->name}}</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">{{$rorrow->reader->id}}</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">{{$rorrow->book->id}}</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">{{$rorrow->borrow_date}}</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">{{$rorrow->return_date}}</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">{{$rorrow->status}}</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">{{$rorrow->created_at}}</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">{{$rorrow->updated_at}}</td>
                             <td style="border: 1px solid #ddd; padding: 8px;">
                                 <a href="#" class="btn btn-warning btn-sm" title="Sửa"><i class="fa fa-edit"></i>
                                     edit</a>
@@ -37,6 +38,7 @@
                                     delete</a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

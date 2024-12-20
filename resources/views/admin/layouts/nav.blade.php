@@ -1,18 +1,14 @@
 <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
-        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i
-                class="fa fa-bars"></i> </a>
+        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
         <form role="search" class="navbar-form-custom" action="search_results.html">
             <div class="form-group">
-                <input type="text" placeholder="Search for something..." class="form-control"
-                    name="top-search" id="top-search">
+                <input type="text" placeholder="Search for something..." class="form-control" name="top-search"
+                    id="top-search">
             </div>
         </form>
     </div>
     <ul class="nav navbar-top-links navbar-right">
-        <li>
-            <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
-        </li>
         <li class="dropdown">
             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                 <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
@@ -21,7 +17,7 @@
                 <li>
                     <div class="dropdown-messages-box">
                         <a href="profile.html" class="pull-left">
-                            <img alt="image" class="img-circle" src="img/a7.jpg">
+                            <img alt="image" class="img-circle" src="{{ asset('backend/img/a7.jpg') }}">
                         </a>
                         <div>
                             <small class="pull-right">46h ago</small>
@@ -35,7 +31,7 @@
                 <li>
                     <div class="dropdown-messages-box">
                         <a href="profile.html" class="pull-left">
-                            <img alt="image" class="img-circle" src="img/a4.jpg">
+                            <img alt="image" class="img-circle" src="{{ asset('backend/img/a4.jpg') }}">
                         </a>
                         <div>
                             <small class="pull-right text-navy">5h ago</small>
@@ -49,7 +45,7 @@
                 <li>
                     <div class="dropdown-messages-box">
                         <a href="profile.html" class="pull-left">
-                            <img alt="image" class="img-circle" src="img/profile.jpg">
+                            <img alt="image" class="img-circle" src="{{ asset('backend/img/profil') }}e.jpg">
                         </a>
                         <div>
                             <small class="pull-right">23h ago</small>

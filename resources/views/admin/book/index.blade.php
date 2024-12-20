@@ -3,7 +3,7 @@
     <div class="col-lg-13">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Library Management</h5>
+                <h5>Book Management</h5>
                 <div class="ibox-tools">
                     <a href="{{ route('create.book') }}" class="btn btn-primary btn-sm" title="Thêm Dòng" onclick="addRow()">
                         <i class="fa fa-plus"></i> Thêm
@@ -37,14 +37,18 @@
                                 <td style="border: 1px solid #ddd; padding: 8px;">{{ $book->quantity }}</td>
                                 <td style="border: 1px solid #ddd; padding: 8px;">{{ $book->created_at }}</td>
                                 <td style="border: 1px solid #ddd; padding: 8px;">{{ $book->updated_at }}</td>
-                                <td style="border: 1px solid #ddd; padding: 8px;">
-                                    <!-- Nút edit -->
+                                <td style="border: 1px solid #ddd; padding: 8px; display: flex; justify-content: space-between;">
+                                    {{-- btn show --}}
+                                    <a href="#" class="btn btn-info btn-sm" title="show" name="show">
+                                        <i class="fa fa-eye"></i> Show
+                                    </a>
+                                    <!-- btn edit -->
                                     <a href="{{ route('edit.book', $book->id)}}" class="btn btn-warning btn-sm" title="edit" name="edit">
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
 
                                     <!-- Form xóa -->
-                                    <form action="{{ route('destroy.book', $book->id) }}" method="POST" style="display: inline-block;">
+                                    <form action="{{ route('destroy.book', $book->id) }}" method="POST" >
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?') ">
