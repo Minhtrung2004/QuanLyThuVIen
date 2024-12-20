@@ -21,7 +21,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('books.create'); // Hiển thị form tạo sách mới
+        return view('admin.book.create');
     }
 
     /**
@@ -32,14 +32,13 @@ class BookController extends Controller
         // Validate dữ liệu nhập vào
         $request->validate([
             'name' => 'required',
-            'author' => 'required'
+            'author' => 'required',
+            'category' => 'required',
+            'year' => 'required',
+            'quantity' => 'required'
         ]);
-
-        // Tạo sách mới
-        Book::create($request->all()); // Sử dụng $request thay vì $Request
-
-        // Chuyển hướng về trang danh sách sách với thông báo thành công
-        return redirect()->route('books.index')->with('success', 'Thêm thành công.');
+        Book::create($request->all());
+        return redirect()->route('index.book')->with('success', 'Thêm thành công.');
     }
 
     /**
@@ -48,7 +47,7 @@ class BookController extends Controller
     public function show(string $id)
     {
         $book = Book::findOrFail($id); // Tìm sách theo ID
-        return view('books.show', compact('book')); // Trả về view hiển thị chi tiết sách
+        return view('book.show', compact('book')); // Trả về view hiển thị chi tiết sách
     }
 
     /**
@@ -57,7 +56,7 @@ class BookController extends Controller
     public function edit(string $id)
     {
         $book = Book::findOrFail($id); // Tìm sách theo ID
-        return view('books.edit', compact('book')); // Trả về form chỉnh sửa sách
+        return view('book.edit', compact('book')); // Trả về form chỉnh sửa sách
     }
 
     /**
@@ -76,19 +75,16 @@ class BookController extends Controller
         $book->update($request->all());
 
         // Chuyển hướng về trang danh sách sách với thông báo thành công
-        return redirect()->route('books.index')->with('success', 'Cập nhật thành công.');
+        return redirect()->route('book.index')->with('success', 'Cập nhật thành công.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy( $id)
     {
-        // Tìm sách theo ID và xóa
-        $book = Book::findOrFail($id);
+        $book = Book::find($id);
         $book->delete();
-
-        // Chuyển hướng về trang danh sách sách với thông báo thành công
-        return redirect()->route('books.index')->with('success', 'Xóa thành công.');
+        return redirect()->route('index.book')->with('success', 'Xóa thành công.');
     }
 }

@@ -4,9 +4,15 @@
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <h5>Library Management</h5>
+                <div class="ibox-tools">
+                    <a href="{{ route('create.book') }}" class="btn btn-primary btn-sm" title="Thêm Dòng" onclick="addRow()">
+                        <i class="fa fa-plus"></i> Thêm
+                    </a>
+                </div>
             </div>
             <div class="ibox-content">
                 <table class="table table-hover no-margins" style="border: 2px solid #ddd; border-collapse: collapse;">
+                    @csrf
                     <thead>
                         <tr style="border-bottom: 2px solid #ccc;">
                             <th style="border: 1px solid #ddd; padding: 8px;">id</th>
@@ -21,22 +27,34 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td style="border: 1px solid #ddd; padding: 8px;">1</td>
-                            <td style="border: 1px solid #ddd; padding: 8px;">The Great Gatsby</td>
-                            <td style="border: 1px solid #ddd; padding: 8px;">F. Scott</td>
-                            <td style="border: 1px solid #ddd; padding: 8px;">Fiction</td>
-                            <td style="border: 1px solid #ddd; padding: 8px;">1925</td>
-                            <td style="border: 1px solid #ddd; padding: 8px;">5</td>
-                            <td style="border: 1px solid #ddd; padding: 8px;">2024-12-19 10:00:00</td>
-                            <td style="border: 1px solid #ddd; padding: 8px;">2024-12-19 10:00:00</td>
-                            <td style="border: 1px solid #ddd; padding: 8px;">
-                                <a href="#" class="btn btn-warning btn-sm" title="Sửa"><i class="fa fa-edit"></i>
-                                    edit</a>
-                                <a href="#" class="btn btn-danger btn-sm" title="Xóa"><i class="fa fa-trash"></i>
-                                    delete</a>
-                            </td>
-                        </tr>
+                        @foreach ($books as $book)
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 8px;">{{ $book->id }}</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">{{ $book->name }}</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">{{ $book->author }}</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">{{ $book->category }}</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">{{ $book->year }}</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">{{ $book->quantity }}</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">{{ $book->created_at }}</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">{{ $book->updated_at }}</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">
+                                    <a href="#" class="btn btn-warning btn-sm" title="edit" name="edit"><i
+                                            class="fa fa-edit"></i>
+                                        edit</a>
+
+                                    <form action="{{ route('destroy.book', $book->id) }}" method="POST" style="display: inline-block;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger"
+                                            onclick="return confirm('Bạn có chắc chắn muốn xóa?')">
+                                            <i
+                                            class="fa fa-trash"></i> Delete</button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>

@@ -8577,3 +8577,10 @@ th, td {
 th {
     background-color: #f2f2f2;
 }
+
+.custom-btn {
+    margin-top: 15px; /* Cách trên 4px */
+    margin-left: auto; /* Đẩy sang bên phải */
+    margin-right: 0; /* Tùy chọn, nếu muốn có khoảng cách bên phải */
+    display: block; /* Đảm bảo phần tử được xếp thành block để margin-left hoạt động */
+}
