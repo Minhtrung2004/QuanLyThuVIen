@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\RorrowController;
 use Illuminate\Support\Facades\Route;
@@ -23,4 +24,4 @@ Route::get('oke',[ReaderController::class, 'index'])->name('index.reader');
 /* Borrows */
 Route::get('okeee',[RorrowController::class, 'index'])->name('index.rorrow');
 
-/**/
+/*Login*/
